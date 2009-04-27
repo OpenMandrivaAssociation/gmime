@@ -14,7 +14,7 @@ Release:		%mkrel 1
 License:		LGPLv2+
 Group:			System/Libraries
 URL:			http://spruce.sourceforge.net/gmime
-Source0:		http://spruce.sourceforge.net/gmime/sources/v2.2/gmime-%{version}.tar.bz2
+Source0:		http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Patch: gmime-2.4.3-format-strings.patch
 BuildRequires:		glib2-devel
 BuildRequires:		gtk-doc
