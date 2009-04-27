@@ -1,5 +1,5 @@
 %define	major 2
-%define apiver 2.0
+%define apiver 2.4
 %define libname %mklibname %{name} %{apiver} %{major}
 %define develname %mklibname %{name} -d
 
@@ -9,12 +9,13 @@
 %define _requires_exceptions libgmime
 Summary:		The libGMIME library
 Name:			gmime
-Version:		2.2.23
+Version:		2.4.6
 Release:		%mkrel 1
 License:		LGPLv2+
 Group:			System/Libraries
 URL:			http://spruce.sourceforge.net/gmime
 Source0:		http://spruce.sourceforge.net/gmime/sources/v2.2/gmime-%{version}.tar.bz2
+Patch: gmime-2.4.3-format-strings.patch
 BuildRequires:		glib2-devel
 BuildRequires:		gtk-doc
 BuildRequires:		libz-devel
@@ -69,9 +70,9 @@ This library allows you to manipulate MIME messages.
 %prep
 
 %setup -q
+%patch -p1
 
 %build
-#libtoolize --copy --force; aclocal; autoconf; automake
 
 %configure2_5x \
 	--with-html-dir=%{_gtkdocdir} \
@@ -95,9 +96,6 @@ mv %{buildroot}%{_bindir}/uuencode %{buildroot}%{_bindir}/gmime-uuencode
 
 # cleanup
 rm -f %{buildroot}%{_libdir}/gmimeConf.sh
-
-#multiarch 
-%multiarch_binaries %{buildroot}%{_bindir}/gmime-config
 
 
 %if %mdkversion < 200900
@@ -123,18 +121,15 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %files -n %{develname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog PORTING README TODO
-%multiarch %{multiarch_bindir}/gmime-config
-%{_bindir}/gmime-config
 %{_libdir}/lib*.a
 %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_libdir}/pkgconfig/gmime-2.0.pc
+%{_libdir}/pkgconfig/gmime-%{apiver}.pc
 %{_includedir}/*
 %doc %{_gtkdocdir}/*
 
 %files sharp
 %defattr(-,root,root)
 %{_prefix}/lib/mono/gac/%{name}-sharp
-%{_prefix}/lib/mono/%{name}-sharp
-%{_libdir}/pkgconfig/%{name}-sharp.pc
-%{_datadir}/gapi-2.0/gmime-api.xml
+%{_prefix}/lib/mono/%{name}-sharp-%{apiver}
+%{_libdir}/pkgconfig/%{name}-sharp-%{apiver}.pc
