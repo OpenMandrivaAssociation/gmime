@@ -3,6 +3,12 @@
 %define libname %mklibname %{name} %{apiver} %{major}
 %define develname %mklibname %{name} -d
 
+%define build_mono 1
+
+%ifarch %mips %arm
+%define build_mono 0
+%endif
+
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
 %{expand:%%define _aclocaldir %(aclocal --print-ac-dir 2>/dev/null)}
 
@@ -10,7 +16,7 @@
 Summary:		The libGMIME library
 Name:			gmime
 Version:		2.4.9
-Release:		%mkrel 1
+Release:		%mkrel 2
 License:		LGPLv2+
 Group:			System/Libraries
 URL:			http://spruce.sourceforge.net/gmime
@@ -19,9 +25,11 @@ Patch: gmime-2.4.3-format-strings.patch
 BuildRequires:		glib2-devel
 BuildRequires:		gtk-doc
 BuildRequires:		libz-devel
+%if %{build_mono}
 BuildRequires:		mono-devel
 BuildRequires:		gtk-sharp2-devel
 BuildRequires:		gtk-sharp2
+%endif
 Buildroot:		%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -59,6 +67,7 @@ Provides:	%mklibname %{name} 2.0 -d
 %description -n %{develname}
 This package contains the lib%{name} development library and its header files.
 
+%if %{build_mono}
 %package sharp
 Summary:	GMIME# bindings for mono
 Group:		System/Libraries
@@ -66,6 +75,7 @@ Requires:	%{libname} = %{version}-%{release}
 
 %description sharp
 This library allows you to manipulate MIME messages.
+%endif
 
 %prep
 
@@ -128,8 +138,10 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %{_includedir}/*
 %doc %{_gtkdocdir}/*
 
+%if %{build_mono}
 %files sharp
 %defattr(-,root,root)
 %{_prefix}/lib/mono/gac/%{name}-sharp
 %{_prefix}/lib/mono/%{name}-sharp-%{apiver}
 %{_libdir}/pkgconfig/%{name}-sharp-%{apiver}.pc
+%endif
