@@ -15,13 +15,12 @@
 %define _requires_exceptions libgmime
 Summary:		The libGMIME library
 Name:			gmime
-Version:		2.4.15
+Version:		2.4.17
 Release:		%mkrel 1
 License:		LGPLv2+
 Group:			System/Libraries
 URL:			http://spruce.sourceforge.net/gmime
 Source0:		http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
-Patch: gmime-2.4.3-format-strings.patch
 BuildRequires:		glib2-devel
 BuildRequires:		gtk-doc
 BuildRequires:		libz-devel
@@ -80,7 +79,6 @@ This library allows you to manipulate MIME messages.
 %prep
 
 %setup -q
-%patch -p1
 
 %build
 
