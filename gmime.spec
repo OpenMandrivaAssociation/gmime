@@ -24,6 +24,7 @@ Source0:		http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.xz
 BuildRequires:		glib2-devel
 BuildRequires:		gtk-doc
 BuildRequires:		libz-devel
+BuildRequires:		gpgme-devel
 %if %{build_mono}
 BuildRequires:		mono-devel
 BuildRequires:		gtk-sharp2-devel
