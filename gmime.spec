@@ -1,4 +1,4 @@
-%define	major 2
+%define	major 0
 %define apiver 2.6
 %define libname %mklibname %{name} %{apiver} %{major}
 %define develname %mklibname %{name} -d
