@@ -79,7 +79,7 @@ This library allows you to manipulate MIME messages.
 
 %prep
 
-%setup -q -n %oname-%version
+%setup -q -n %name-%version
 
 %build
 
