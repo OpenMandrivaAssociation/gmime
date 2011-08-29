@@ -1,5 +1,5 @@
 %define	major 2
-%define apiver 2.4
+%define apiver 2.6
 %define libname %mklibname %{name} %{apiver} %{major}
 %define develname %mklibname %{name} -d
 
@@ -15,7 +15,7 @@
 %define _requires_exceptions libgmime
 Summary:		The libGMIME library
 Name:			gmime
-Version:		2.4.26
+Version:		2.6.0
 Release:		%mkrel 1
 License:		LGPLv2+
 Group:			System/Libraries
