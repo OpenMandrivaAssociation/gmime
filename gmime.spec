@@ -16,21 +16,20 @@
 Summary:		The libGMIME library
 Name:			gmime
 Version:		2.6.1
-Release:		%mkrel 1
+Release:		2
 License:		LGPLv2+
 Group:			System/Libraries
 URL:			http://spruce.sourceforge.net/gmime
 Source0:		http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.xz
-BuildRequires:		glib2-devel
-BuildRequires:		gtk-doc
-BuildRequires:		libz-devel
-BuildRequires:		gpgme-devel
+BuildRequires:	glib2-devel
+BuildRequires:	gtk-doc
+BuildRequires:	libz-devel
+BuildRequires:	gpgme-devel
 %if %{build_mono}
-BuildRequires:		mono-devel
-BuildRequires:		gtk-sharp2-devel
-BuildRequires:		gtk-sharp2
+BuildRequires:	mono-devel
+BuildRequires:	gtk-sharp2-devel
+BuildRequires:	gtk-sharp2
 %endif
-Buildroot:		%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 This library allows you to manipulate MIME messages.
@@ -58,7 +57,6 @@ This library allows you to manipulate MIME messages.
 %package -n %{develname}
 Summary:	Development library and header files for the lib%{name} library
 Group:		Development/C
-Provides:	lib%{name}-devel
 Provides:	%{name}-devel
 Requires:	%{libname} = %{version}-%{release}
 Obsoletes:	%mklibname %{name} 2.0 -d
@@ -78,12 +76,11 @@ This library allows you to manipulate MIME messages.
 %endif
 
 %prep
-
-%setup -q -n %name-%version
+%setup -q
 
 %build
-
 %configure2_5x \
+	--disable-static \
 	--with-html-dir=%{_gtkdocdir} \
 	--enable-gtk-doc
 
@@ -95,44 +92,27 @@ This library allows you to manipulate MIME messages.
 make check
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
-
+rm -rf %{buildroot}
 %makeinstall_std
+
+# cleanup
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
+rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 
 # these are provided by sharutils, gotta rename them...
 mv %{buildroot}%{_bindir}/uudecode %{buildroot}%{_bindir}/gmime-uudecode
 mv %{buildroot}%{_bindir}/uuencode %{buildroot}%{_bindir}/gmime-uuencode
 
-# cleanup
-rm -f %{buildroot}%{_libdir}/gmimeConf.sh
-
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
-
 %files -n %{name}-utils
-%defattr(-,root,root)
 %{_bindir}/gmime-uudecode
 %{_bindir}/gmime-uuencode
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib*%{apiver}.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog PORTING README TODO
-%{_libdir}/lib*.a
 %{_libdir}/lib*.so
-%{_libdir}/lib*.la
 %{_libdir}/pkgconfig/gmime-%{apiver}.pc
 %{_includedir}/*
 %doc %{_gtkdocdir}/*
