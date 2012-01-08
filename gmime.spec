@@ -99,6 +99,11 @@ rm -rf %{buildroot}
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 
+%if %_lib != lib
+mkdir %buildroot%_prefix/lib/
+mv %buildroot%_libdir/mono %buildroot%_prefix/lib/
+%endif
+
 %files -n %{name}-utils
 %{_bindir}/gmime-uudecode
 %{_bindir}/gmime-uuencode
