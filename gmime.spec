@@ -99,10 +99,6 @@ rm -rf %{buildroot}
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 
-# these are provided by sharutils, gotta rename them...
-mv %{buildroot}%{_bindir}/uudecode %{buildroot}%{_bindir}/gmime-uudecode
-mv %{buildroot}%{_bindir}/uuencode %{buildroot}%{_bindir}/gmime-uuencode
-
 %files -n %{name}-utils
 %{_bindir}/gmime-uudecode
 %{_bindir}/gmime-uuencode
