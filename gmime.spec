@@ -15,7 +15,7 @@
 %define _requires_exceptions libgmime
 Summary:		The libGMIME library
 Name:			gmime
-Version:		2.6.3
+Version:		2.6.4
 Release:		1
 License:		LGPLv2+
 Group:			System/Libraries
