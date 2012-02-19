@@ -97,6 +97,7 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/gmime-%{apiver}.pc
 %{_includedir}/*
+%_datadir/gapi-2.0/gmime-api.xml
 %doc %{_gtkdocdir}/*
 
 %if %{build_mono}
