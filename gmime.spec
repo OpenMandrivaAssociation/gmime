@@ -10,7 +10,6 @@
 %endif
 
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
-%{expand:%%define _aclocaldir %(aclocal --print-ac-dir 2>/dev/null || echo %_datadir/aclocal)}
 %define _requires_exceptions libgmime
 Summary:		The libGMIME library
 Name:			gmime
@@ -24,7 +23,6 @@ BuildRequires:	glib2-devel
 BuildRequires:	gtk-doc
 BuildRequires:	libz-devel
 BuildRequires:	gpgme-devel
-BuildRequires:	automake
 %if %{build_mono}
 BuildRequires:	mono-devel
 BuildRequires:	gtk-sharp2-devel
