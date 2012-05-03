@@ -10,7 +10,6 @@
 %endif
 
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
-%define _requires_exceptions libgmime
 Summary:		The libGMIME library
 Name:			gmime
 Version:		2.6.9
