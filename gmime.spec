@@ -1,7 +1,9 @@
-%define	major 0
-%define apiver 2.6
-%define libname %mklibname %{name} %{apiver} %{major}
-%define develname %mklibname %{name} -d
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
+%define major	0
+%define apiver	2.6
+%define libname	%mklibname %{name} %{apiver} %{major}
+%define devname %mklibname %{name} -d
 
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
 %define build_mono 1
@@ -12,12 +14,13 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	2.6.10
+Version:	2.6.12
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://spruce.sourceforge.net/gmime
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+
 BuildRequires:	gtk-doc
 BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(glib-2.0)
@@ -34,27 +37,22 @@ This library allows you to manipulate MIME messages.
 %package -n %{libname}
 Summary:	The libGMIME library
 Group:		System/Libraries
-Obsoletes:	%mklibname %{name} 2.0
-Provides:	%mklibname %{name} 2.0
-Provides:	lib%{name} = %{version}-%{release}
 
 %description -n %{libname}
 This library allows you to manipulate MIME messages.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Development library and header files for the lib%{name} library
 Group:		Development/C
 Provides:	%{name}-devel
 Requires:	%{libname} = %{version}-%{release}
-Obsoletes:	%mklibname %{name} 2.0 -d
-Provides:	%mklibname %{name} 2.0 -d
 
-%description -n %{develname}
+%description -n %{devname}
 This package contains the lib%{name} development library and its header files.
 
 %if %{build_mono}
 %package sharp
-Summary:	GMIME# bindings for mono
+Summary:	GMIME bindings for mono
 Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
 
@@ -82,18 +80,17 @@ make check
 %makeinstall_std
 
 # cleanup
-find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 
 %files -n %{libname}
 %{_libdir}/lib*%{apiver}.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %doc AUTHORS ChangeLog PORTING README TODO
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/gmime-%{apiver}.pc
 %{_includedir}/*
-%_datadir/gapi-2.0/gmime-api.xml
+%{_datadir}/gapi-2.0/gmime-api.xml
 %doc %{_gtkdocdir}/*
 
 %if %{build_mono}
