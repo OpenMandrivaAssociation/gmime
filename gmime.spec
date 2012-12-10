@@ -14,7 +14,7 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	2.6.12
+Version:	2.6.13
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
