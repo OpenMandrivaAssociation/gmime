@@ -18,7 +18,7 @@ Version:	2.6.13
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
-URL:		http://spruce.sourceforge.net/gmime
+Url:		http://spruce.sourceforge.net/gmime
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	gtk-doc
@@ -26,9 +26,9 @@ BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(zlib)
 %if %{build_mono}
-BuildRequires:	mono-devel
-BuildRequires:	gtk-sharp2-devel
-BuildRequires:	gtk-sharp2
+BuildRequires:	pkgconfig(gapi-2.0)
+BuildRequires:	pkgconfig(gtk-sharp-2.0)
+BuildRequires:	pkgconfig(mono)
 %endif
 
 %description
