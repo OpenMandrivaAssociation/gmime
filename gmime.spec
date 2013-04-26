@@ -83,7 +83,7 @@ make check
 rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 
 %files -n %{libname}
-%{_libdir}/lib*%{apiver}.so.%{major}*
+%{_libdir}/libgmime-%{apiver}.so.%{major}*
 
 %files -n %{devname}
 %doc AUTHORS ChangeLog PORTING README TODO
