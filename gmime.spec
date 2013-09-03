@@ -6,10 +6,12 @@
 %define devname %mklibname %{name} -d
 
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
-%define build_mono 1
+%ifarch %{ix86} x86_64
+%bcond_without mono
+%endif
 
 %ifarch %mips %arm
-%define build_mono 0
+%bcond_with mono
 %endif
 
 Summary:	The libGMIME library
@@ -25,7 +27,7 @@ BuildRequires:	gtk-doc
 BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(zlib)
-%if %{build_mono}
+%if %{with mono}
 BuildRequires:	pkgconfig(gapi-2.0)
 BuildRequires:	pkgconfig(gtk-sharp-2.0)
 BuildRequires:	pkgconfig(mono)
@@ -50,7 +52,7 @@ Requires:	%{libname} = %{version}-%{release}
 %description -n %{devname}
 This package contains the lib%{name} development library and its header files.
 
-%if %{build_mono}
+%if %{with mono}
 %package sharp
 Summary:	GMIME bindings for mono
 Group:		System/Libraries
@@ -90,10 +92,12 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/gmime-%{apiver}.pc
 %{_includedir}/*
+%if %{with mono}
 %{_datadir}/gapi-2.0/gmime-api.xml
+%endif
 %doc %{_gtkdocdir}/*
 
-%if %{build_mono}
+%if %{with mono}
 %files sharp
 %{_prefix}/lib/mono/gac/%{name}-sharp
 %{_prefix}/lib/mono/%{name}-sharp-%{apiver}
