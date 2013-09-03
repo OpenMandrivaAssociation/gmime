@@ -8,8 +8,7 @@
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
 %define build_mono 1
 
-%ifarch %mips 
-#% arm
+%ifarch %mips %arm
 %define build_mono 0
 %endif
 
