@@ -29,7 +29,7 @@ BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	vala-devel
+#BuildRequires:	vala-devel
 %if %{with mono}
 BuildRequires:	pkgconfig(gapi-2.0)
 BuildRequires:	pkgconfig(gtk-sharp-2.0)
