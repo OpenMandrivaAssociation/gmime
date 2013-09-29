@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   gmime-2.6.13.tar.xz: d00b54030517cc0be1d62d942950c7226bd07e46
+sources:
+  gmime-2.6.18.tar.xz: 5a820e20cb2c15709479c7a4e412b5764c4678c0

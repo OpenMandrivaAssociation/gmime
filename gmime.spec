@@ -3,6 +3,7 @@
 %define major	0
 %define apiver	2.6
 %define libname	%mklibname %{name} %{apiver} %{major}
+%define girname	%mklibname %{name}-gir %{apiver}
 %define devname %mklibname %{name} -d
 
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
@@ -16,7 +17,7 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	2.6.13
+Version:	2.6.18
 Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
@@ -42,6 +43,14 @@ Group:		System/Libraries
 
 %description -n %{libname}
 This library allows you to manipulate MIME messages.
+
+%package -n %{girname}
+Summary:	GObject Introspection interface description for GMime
+Group:		System/Libraries
+Requires:	%{libname} = %{version}-%{release}
+
+%description -n %{girname}
+GObject Introspection interface description for GMime.
 
 %package -n %{devname}
 Summary:	Development library and header files for the lib%{name} library
@@ -91,11 +100,15 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %doc AUTHORS ChangeLog PORTING README TODO
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/gmime-%{apiver}.pc
+%{_datadir}/gir-1.0/GMime-%{apiver}.gir
 %{_includedir}/*
 %if %{with mono}
 %{_datadir}/gapi-2.0/gmime-api.xml
 %endif
 %doc %{_gtkdocdir}/*
+
+%files -n %{girname}
+%{_libdir}/girepository-1.0/GMime-%{apiver}.typelib
 
 %if %{with mono}
 %files sharp
