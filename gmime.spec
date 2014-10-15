@@ -17,13 +17,13 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	2.6.18
-Release:	7
+Version:	2.6.20
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://spruce.sourceforge.net/gmime
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-
+Source100:	gmime.rpmlintrc
 BuildRequires:	gtk-doc
 BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(glib-2.0)
@@ -77,10 +77,11 @@ This library allows you to manipulate MIME messages.
 %setup -q
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--with-html-dir=%{_gtkdocdir} \
-	--enable-gtk-doc
+	--enable-gtk-doc \
+	--disable-vala
 
 #gw parallel build broken in 2.1.15
 # (tpg) mono stuff doesn't like parallel build, this solves it
