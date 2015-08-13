@@ -5,6 +5,7 @@
 %define libname	%mklibname %{name} %{apiver} %{major}
 %define girname	%mklibname %{name}-gir %{apiver}
 %define devname %mklibname %{name} -d
+%define _disable_rebuild_configure 1
 
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
 %ifarch %{ix86} x86_64
