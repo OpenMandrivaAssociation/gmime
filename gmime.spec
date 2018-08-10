@@ -1,7 +1,7 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 %define major	0
-%define apiver	2.6
+%define apiver	3.0
 %define libname	%mklibname %{name} %{apiver} %{major}
 %define girname	%mklibname %{name}-gir %{apiver}
 %define devname %mklibname %{name} -d
@@ -18,8 +18,8 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	2.6.20
-Release:	4
+Version:	3.2.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://spruce.sourceforge.net/gmime
