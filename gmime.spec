@@ -1,7 +1,7 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 
 %define major	0
-%define apiver	2.6
+%define apiver	3.0
 %define libname	%mklibname %{name} %{apiver} %{major}
 %define girname	%mklibname %{name}-gir %{apiver}
 %define devname %mklibname %{name} -d
@@ -18,8 +18,8 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	2.6.20
-Release:	4
+Version:	3.2.0
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://spruce.sourceforge.net/gmime
@@ -107,7 +107,7 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %{_datadir}/gir-1.0/GMime-%{apiver}.gir
 %{_includedir}/*
 %if %{with mono}
-%{_datadir}/gapi-2.0/gmime-api.xml
+#{_datadir}/gapi-2.0/gmime-api.xml
 %endif
 %doc %{_gtkdocdir}/*
 
@@ -116,8 +116,8 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 
 %if %{with mono}
 %files sharp
-%{_prefix}/lib/mono/gac/%{name}-sharp
-%{_prefix}/lib/mono/%{name}-sharp-%{apiver}
-%{_libdir}/pkgconfig/%{name}-sharp-%{apiver}.pc
+#{_prefix}/lib/mono/gac/%{name}-sharp
+#{_prefix}/lib/mono/%{name}-sharp-%{apiver}
+#{_libdir}/pkgconfig/%{name}-sharp-%{apiver}.pc
 %endif
 
