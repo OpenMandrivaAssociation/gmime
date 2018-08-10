@@ -107,7 +107,7 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %{_datadir}/gir-1.0/GMime-%{apiver}.gir
 %{_includedir}/*
 %if %{with mono}
-%{_datadir}/gapi-2.0/gmime-api.xml
+#{_datadir}/gapi-2.0/gmime-api.xml
 %endif
 %doc %{_gtkdocdir}/*
 
