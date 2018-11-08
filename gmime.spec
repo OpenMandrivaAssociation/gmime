@@ -18,8 +18,8 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	3.2.1
-Release:	2
+Version:	3.2.2
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://spruce.sourceforge.net/gmime
@@ -30,7 +30,7 @@ BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-#BuildRequires:	vala-devel
+BuildRequires:	vala-devel
 %if %{with mono}
 BuildRequires:	pkgconfig(gapi-2.0)
 BuildRequires:	pkgconfig(gtk-sharp-2.0)
