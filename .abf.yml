@@ -3,3 +3,4 @@ removed_sources:
 sources:
   gmime-3.2.0.tar.xz: 78cf0e5fa836720e79c37b8d6b9e531344bce476
   gmime-3.2.1.tar.xz: 5d04e19ac9ff525a949eb8b80924953d0b78d103
+  gmime-3.2.2.tar.xz: e27b747eafa14523a94f6ea003712f1cbfe8606a
