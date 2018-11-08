@@ -82,7 +82,7 @@ This library allows you to manipulate MIME messages.
 	--disable-static \
 	--with-html-dir=%{_gtkdocdir} \
 	--enable-gtk-doc \
-	--enable-vala
+	--disable-vala
 
 #gw parallel build broken in 2.1.15
 # (tpg) mono stuff doesn't like parallel build, this solves it
