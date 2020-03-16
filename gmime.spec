@@ -89,9 +89,6 @@ This library allows you to manipulate MIME messages.
 # (tpg) mono stuff doesn't like parallel build, this solves it
 %(echo %make|perl -pe 's/-j\d+/-j1/g')
 
-%check
-make check
-
 %install
 %make_install
 
