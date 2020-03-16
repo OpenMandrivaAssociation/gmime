@@ -77,7 +77,6 @@ This library allows you to manipulate MIME messages.
 
 %prep
 %setup -q
-install -Dpm 644 %{S:1} gmime/
 
 %build
 %configure \
