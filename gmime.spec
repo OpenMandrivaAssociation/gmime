@@ -107,6 +107,8 @@ rm -f %{buildroot}%{_libdir}/gmimeConf.sh
 %{_libdir}/pkgconfig/gmime-%{apiver}.pc
 %{_datadir}/gir-1.0/GMime-%{apiver}.gir
 %{_includedir}/*
+%{_datadir}/vala/vapi/gmime-3.0.deps
+%{_datadir}/vala/vapi/gmime-3.0.vapi
 %if %{with mono}
 #{_datadir}/gapi-2.0/gmime-api.xml
 %endif
