@@ -19,7 +19,7 @@
 Summary:	The libGMIME library
 Name:		gmime
 Version:	3.2.6
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://spruce.sourceforge.net/gmime
@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	vala-devel
+BuildRequires:  gnupg2
 %if %{with mono}
 BuildRequires:	pkgconfig(gapi-2.0)
 BuildRequires:	pkgconfig(gtk-sharp-2.0)
@@ -76,13 +77,14 @@ This library allows you to manipulate MIME messages.
 
 %prep
 %setup -q
+install -Dpm 644 %{S:1} gmime/
 
 %build
 %configure \
 	--disable-static \
 	--with-html-dir=%{_gtkdocdir} \
 	--enable-gtk-doc \
-	--disable-vala
+	--enable-vala
 
 #gw parallel build broken in 2.1.15
 # (tpg) mono stuff doesn't like parallel build, this solves it
@@ -92,7 +94,7 @@ This library allows you to manipulate MIME messages.
 make check
 
 %install
-%makeinstall_std
+%make_install
 
 # cleanup
 rm -f %{buildroot}%{_libdir}/gmimeConf.sh
