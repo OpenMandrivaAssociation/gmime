@@ -9,7 +9,7 @@
 
 %define _gtkdocdir	%{_datadir}/gtk-doc/html
 %ifarch %{ix86} x86_64
-%bcond_without mono
+%bcond_with mono
 %endif
 
 %ifarch %mips %arm
