@@ -18,12 +18,14 @@
 
 Summary:	The libGMIME library
 Name:		gmime
-Version:	3.2.7
-Release:	5
+Version:	3.2.11
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://spruce.sourceforge.net/gmime
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+#Active repository is now here:
+Source0:	https://github.com/jstedfast/gmime/releases/download/%{version}/gmime-%{version}.tar.xz
+#Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source100:	gmime.rpmlintrc
 BuildRequires:	gtk-doc
 BuildRequires:	gpgme-devel
