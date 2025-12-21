@@ -27,6 +27,11 @@ Url:		https://spruce.sourceforge.net/gmime
 Source0:	https://github.com/jstedfast/gmime/releases/download/%{version}/gmime-%{version}.tar.xz
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source100:	gmime.rpmlintrc
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gtk-doc
 BuildRequires:	gpgme-devel
 BuildRequires:	pkgconfig(glib-2.0)
